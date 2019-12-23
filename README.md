@@ -9,6 +9,14 @@ This project contains:
 * A function that generates a unique ID of 19 chars only (**src/idgen.js**) ;
 * A web server that exposes a `GET /:namespace` route to generates IDs (**src/server.js**).
 
+## Live test
+
+I've deployed the service in an AWS **micro** instance. Please, do not run stress test on that, or I'll be oblige to sleep under a bridge :sob:
+
+Just go on http://ec2-34-247-66-79.eu-west-1.compute.amazonaws.com:3000/SRT
+
+(you can change the namespace)
+
 ## How the function works?
 
 A generated ID is composed as follow: `[NAMESPACE]-[UID]`.
