@@ -1,0 +1,15 @@
+{
+  "name": "idgen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "Brice Colucci <brice.colucci@gmail.com>",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "artillery": "^1.6.0-29"
+  }
+}
