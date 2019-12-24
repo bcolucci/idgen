@@ -84,16 +84,16 @@ The ID generator function is completly independant and could be extracted in a d
 ### Choices made
 
 * I've first planed to use the MAC address of the machine inside the ID, but, because we already have a namespace prefix, I've decided that the others ID parts would be sufficent to garantee the non-collision.
-* I've first thought to use a numeric-only ID (*BigInt*), in order to make the IDs time sortable. But it was not a requirement and adding a random generated part in the ID to enforce the uniquess seemed to be a better choice ;
+* I've first thought to use a numeric-only ID (*BigInt* - timestamp as the first part), in order to make the IDs time sortable. But it was not a requirement and adding a random generated part in the ID to enforce the uniquess seemed to be a better choice ;
 * I've decided to base36 encode each part separatly in order to reduce the collision risk ;
 * The function is *scalable* (can be used in paralele in different machines at the same time) thanks to:
     * The process ID. So different processes will generate different IDs, even in the same time ;
-    * An internal counter. Indeed, the library exposes a function **generator** which has in its internal scope a counter that increments from 0 to 999 (0 padded, randomly initialized) and goes back to 0 after 999. So, even in the same process, if I create two generators, they will generate different Ids ;
+    * An internal counter. Indeed, the library exposes a function **generator** which has in its internal scope a counter that increments from 0 to 999 (0 padded, randomly initialized) and goes back to 0 after 999. So, even in the same process, if I create two generators (in the exact same time), I've still 99.9% of chances they will have a different internal counter ;
     * A random 6 chars string (from `Math.random()`).
 
 ### Futur work
 
-* There was not specified requirements about the namespace, but I guess that I sould add some limitations (alphanum, between 3 and 6 chars for example...) ;
+* There was not specified requirements about the namespace, but I guess that I should add some limitations (alphanum, between 3 and 6 chars for example...) ;
 * Could add a query parameter to ask for **N** Ids in the same request ;
 * Could extract the `idgen` function, so it could be used somewhere else ;
 * Could remove the express dependency. It'll add something like 10 more lines of code into `src/server.js` but will reduce the library size and makes it a 0 dep library, and makes it a even faster.
