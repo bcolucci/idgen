@@ -7,7 +7,7 @@
   },
   "author": "Brice Colucci <brice.colucci@gmail.com>",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "artillery": "^1.6.0-29"
